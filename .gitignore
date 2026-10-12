@@ -1,0 +1,14 @@
+.build/
+dist/
+.DS_Store
+*.dmg
+*.app/
+.env*
+*.log
+验证状态.json
+交付验证记录.md
+V0.2_验收记录.md
+
+V0.3_验收记录.md
+
+V0.4_验收记录.md

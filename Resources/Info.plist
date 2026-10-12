@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleName</key><string>AI选模助手</string>
+<key>CFBundleDisplayName</key><string>AI选模助手</string>
+<key>CFBundleIdentifier</key><string>local.gavin.taskrouter</string>
+<key>CFBundleIconFile</key><string>AppIcon</string>
+<key>CFBundleExecutable</key><string>TaskRouter</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleShortVersionString</key><string>1.3.0</string>
+<key>CFBundleVersion</key><string>4</string>
+<key>CFBundleDevelopmentRegion</key><string>en</string>
+<key>CFBundleLocalizations</key><array><string>en</string><string>zh-Hans</string></array>
+<key>LSMinimumSystemVersion</key><string>14.0</string>
+<key>LSUIElement</key><false/>
+<key>LSMultipleInstancesProhibited</key><true/>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSAccessibilityUsageDescription</key><string>在你采用推荐后，帮助选择指定客户端的模型、档位并填入任务。不会自动发送。</string>
+<key>CFBundleDocumentTypes</key><array><dict>
+<key>CFBundleTypeName</key><string>AI选模助手规则</string>
+<key>CFBundleTypeRole</key><string>Viewer</string>
+<key>LSHandlerRank</key><string>Alternate</string>
+<key>CFBundleTypeExtensions</key><array><string>md</string><string>markdown</string></array>
+</dict></array>
+</dict></plist>

@@ -1,0 +1,16 @@
+# Optional template: copy to .github/workflows/macos.yml after reviewing runner support.
+name: macOS checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Core and native-component checks
+        run: bash scripts/test.sh
+      - name: Universal2 build
+        run: bash scripts/build.sh

@@ -1,0 +1,84 @@
+{
+  "checked": "2026-10-01",
+  "cnyPerUSD": 7.0,
+  "exchangeNote": "Fixed planning assumption for approximate comparison, not live FX.",
+  "models": {
+    "sol61": {
+      "currency": "USD",
+      "input": 2,
+      "output": 10,
+      "source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "note": "Standard, short context, uncached input; excludes tools, cache and Fast mode."
+    },
+    "astra": {
+      "currency": "USD",
+      "input": 10,
+      "output": 50,
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "note": "Standard, short context, uncached input; excludes tools, cache and Fast mode."
+    },
+    "sonnet55": {
+      "currency": "USD",
+      "input": 2,
+      "output": 10,
+      "source": "https://www.anthropic.com/claude-sonnet-5-5",
+      "note": "Standard uncached input/output; excludes cache, tools and special processing modes."
+    },
+    "opus55": {
+      "currency": "USD",
+      "input": 4,
+      "output": 20,
+      "source": "https://www.anthropic.com/claude-sonnet-5-5",
+      "note": "Standard uncached input/output; excludes cache, tools and special processing modes."
+    },
+    "wb_k3": {
+      "currency": "CNY",
+      "input": 20,
+      "output": 100,
+      "source": "https://platform.kimi.com/",
+      "note": "Kimi mainland list prices; cache misses, excludes cache writes and tools."
+    },
+    "trae_k3": {
+      "currency": "CNY",
+      "input": 20,
+      "output": 100,
+      "source": "https://platform.kimi.com/",
+      "note": "Kimi mainland list prices; cache misses, excludes cache writes and tools."
+    },
+    "wb_glm53": {
+      "currency": "CNY",
+      "input": 8,
+      "output": 28,
+      "source": "https://open.bigmodel.cn/pricing",
+      "note": "BigModel mainland list prices; cache misses."
+    },
+    "trae_glm53": {
+      "currency": "CNY",
+      "input": 8,
+      "output": 28,
+      "source": "https://open.bigmodel.cn/pricing",
+      "note": "BigModel mainland list prices; cache misses."
+    },
+    "wb_glm53flash": {
+      "currency": "CNY",
+      "input": 0.8,
+      "output": 2.8,
+      "source": "https://open.bigmodel.cn/pricing",
+      "note": "Standard price, excluding temporary 50% promotion and cache."
+    },
+    "wb_ds41": {
+      "currency": "USD",
+      "input": 0.3,
+      "output": 1.2,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "note": "Peak-period cache-miss input and output; off-peak rates are lower."
+    },
+    "trae_ds41": {
+      "currency": "USD",
+      "input": 0.3,
+      "output": 1.2,
+      "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "note": "Peak-period cache-miss input and output; off-peak rates are lower."
+    }
+  }
+}

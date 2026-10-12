@@ -1,0 +1,797 @@
+{
+  "fetchedAt": "2026-10-01",
+  "models": [
+    {
+      "provider": "openai",
+      "id": "gpt-6.1-sol",
+      "name": "GPT-6.1 Sol",
+      "released": "2026-09-29",
+      "updated": "2026-09-29",
+      "input": 2,
+      "output": 10
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5",
+      "released": "2026-09-28",
+      "updated": "2026-09-28",
+      "input": 2,
+      "output": 10
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-6-sol",
+      "name": "GPT-6 Sol",
+      "released": "2026-09-22",
+      "updated": "2026-09-22",
+      "input": 2,
+      "output": 10
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-6-luna",
+      "name": "GPT-6 Luna",
+      "released": "2026-09-22",
+      "updated": "2026-09-22",
+      "input": 0.1,
+      "output": 0.5
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-opus-5-5",
+      "name": "Claude Opus 5.5",
+      "released": "2026-09-22",
+      "updated": "2026-09-22",
+      "input": 4,
+      "output": 20
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-5.3-flashx",
+      "name": "GLM-5.3-FlashX",
+      "released": "2026-09-18",
+      "updated": "2026-09-18",
+      "input": 0.37,
+      "output": 1.25
+    },
+    {
+      "provider": "deepseek",
+      "id": "deepseek-v4-flash-vision-exp",
+      "name": "DeepSeek V4 Flash Vision Exp",
+      "released": "2026-09-10",
+      "updated": "2026-09-10",
+      "input": 0.15,
+      "output": 0.6
+    },
+    {
+      "provider": "deepseek",
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek V4 Flash",
+      "released": "2026-09-10",
+      "updated": "2026-09-10",
+      "input": 0.15,
+      "output": 0.6
+    },
+    {
+      "provider": "deepseek",
+      "id": "deepseek-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "released": "2026-09-10",
+      "updated": "2026-09-10",
+      "input": 0.15,
+      "output": 0.6
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "released": "2026-09-04",
+      "updated": "2026-09-04",
+      "input": 10,
+      "output": 50
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-fable-5-1",
+      "name": "Claude Fable 5.1",
+      "released": "2026-09-01",
+      "updated": "2026-09-01",
+      "input": 10,
+      "output": 50
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-5.3-flash",
+      "name": "GLM-5.3-Flash",
+      "released": "2026-08-26",
+      "updated": "2026-08-26",
+      "input": 0.15,
+      "output": 0.5
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-5.3",
+      "name": "GLM-5.3",
+      "released": "2026-08-14",
+      "updated": "2026-08-14",
+      "input": 1.4,
+      "output": 4.4
+    },
+    {
+      "provider": "deepseek",
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "released": "2026-08-12",
+      "updated": "2026-08-22",
+      "input": 0.435,
+      "output": 0.87
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-daybreak-red-latest",
+      "name": "Daybreak Red",
+      "released": "2026-08-07",
+      "updated": "2026-08-07",
+      "input": 12.5,
+      "output": 75
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-daybreak-blue-latest",
+      "name": "Daybreak Blue",
+      "released": "2026-08-07",
+      "updated": "2026-08-07",
+      "input": 4,
+      "output": 20
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-opus-5",
+      "name": "Claude Opus 5",
+      "released": "2026-07-24",
+      "updated": "2026-07-24",
+      "input": 5,
+      "output": 25
+    },
+    {
+      "provider": "moonshotai-cn",
+      "id": "kimi-k3",
+      "name": "Kimi K3",
+      "released": "2026-07-16",
+      "updated": "2026-07-16",
+      "input": 3,
+      "output": 15
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.6-terra",
+      "name": "GPT-5.6 Terra",
+      "released": "2026-07-09",
+      "updated": "2026-07-09",
+      "input": 2,
+      "output": 12
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.6-sol",
+      "name": "GPT-5.6 Sol",
+      "released": "2026-07-09",
+      "updated": "2026-07-09",
+      "input": 4,
+      "output": 20
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.6-luna",
+      "name": "GPT-5.6 Luna",
+      "released": "2026-07-09",
+      "updated": "2026-07-09",
+      "input": 0.2,
+      "output": 1.2
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.6",
+      "name": "GPT-5.6",
+      "released": "2026-07-09",
+      "updated": "2026-07-09",
+      "input": 4,
+      "output": 20
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "released": "2026-06-29",
+      "updated": "2026-06-30",
+      "input": 2,
+      "output": 10
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-5.2",
+      "name": "GLM-5.2",
+      "released": "2026-06-13",
+      "updated": "2026-06-13",
+      "input": 1.4,
+      "output": 4.4
+    },
+    {
+      "provider": "moonshotai-cn",
+      "id": "kimi-k2.7-code-highspeed",
+      "name": "Kimi K2.7 Code HighSpeed",
+      "released": "2026-06-12",
+      "updated": "2026-06-12",
+      "input": 1.9,
+      "output": 8
+    },
+    {
+      "provider": "moonshotai-cn",
+      "id": "kimi-k2.7-code",
+      "name": "Kimi K2.7 Code",
+      "released": "2026-06-12",
+      "updated": "2026-06-12",
+      "input": 0.95,
+      "output": 4
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-fable-5",
+      "name": "Claude Fable 5",
+      "released": "2026-06-07",
+      "updated": "2026-06-09",
+      "input": 10,
+      "output": 50
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-opus-4-8",
+      "name": "Claude Opus 4.8",
+      "released": "2026-05-28",
+      "updated": "2026-05-28",
+      "input": 5,
+      "output": 25
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.5-pro",
+      "name": "GPT-5.5 Pro",
+      "released": "2026-04-23",
+      "updated": "2026-04-23",
+      "input": 30,
+      "output": 180
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.5",
+      "name": "GPT-5.5",
+      "released": "2026-04-23",
+      "updated": "2026-04-23",
+      "input": 5,
+      "output": 30
+    },
+    {
+      "provider": "moonshotai-cn",
+      "id": "kimi-k2.6",
+      "name": "Kimi K2.6",
+      "released": "2026-04-21",
+      "updated": "2026-04-21",
+      "input": 0.95,
+      "output": 4
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-opus-4-7",
+      "name": "Claude Opus 4.7",
+      "released": "2026-04-14",
+      "updated": "2026-04-16",
+      "input": 5,
+      "output": 25
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-5v-turbo",
+      "name": "GLM-5V-Turbo",
+      "released": "2026-04-01",
+      "updated": "2026-04-01",
+      "input": 5,
+      "output": 22
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-5.1",
+      "name": "GLM-5.1",
+      "released": "2026-03-27",
+      "updated": "2026-03-27",
+      "input": 1.4,
+      "output": 4.4
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.4-nano",
+      "name": "GPT-5.4 nano",
+      "released": "2026-03-17",
+      "updated": "2026-03-17",
+      "input": 0.2,
+      "output": 1.25
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.4-mini",
+      "name": "GPT-5.4 mini",
+      "released": "2026-03-17",
+      "updated": "2026-03-17",
+      "input": 0.75,
+      "output": 4.5
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.4-pro",
+      "name": "GPT-5.4 Pro",
+      "released": "2026-03-05",
+      "updated": "2026-03-05",
+      "input": 30,
+      "output": 180
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.4",
+      "name": "GPT-5.4",
+      "released": "2026-03-05",
+      "updated": "2026-03-05",
+      "input": 2.5,
+      "output": 15
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.3-chat-latest",
+      "name": "GPT-5.3 Chat (latest)",
+      "released": "2026-03-03",
+      "updated": "2026-03-03",
+      "input": 1.75,
+      "output": 14
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-sonnet-4-6",
+      "name": "Claude Sonnet 4.6",
+      "released": "2026-02-17",
+      "updated": "2026-03-13",
+      "input": 3,
+      "output": 15
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-5",
+      "name": "GLM-5",
+      "released": "2026-02-11",
+      "updated": "2026-02-11",
+      "input": 1,
+      "output": 3.2
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.3-codex-spark",
+      "name": "GPT-5.3 Codex Spark",
+      "released": "2026-02-05",
+      "updated": "2026-02-05",
+      "input": 1.75,
+      "output": 14
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.3-codex",
+      "name": "GPT-5.3 Codex",
+      "released": "2026-02-05",
+      "updated": "2026-02-05",
+      "input": 1.75,
+      "output": 14
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-opus-4-6",
+      "name": "Claude Opus 4.6",
+      "released": "2026-02-04",
+      "updated": "2026-03-13",
+      "input": 5,
+      "output": 25
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.7-flashx",
+      "name": "GLM-4.7-FlashX",
+      "released": "2026-01-19",
+      "updated": "2026-01-19",
+      "input": 0.07,
+      "output": 0.4
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.7-flash",
+      "name": "GLM-4.7-Flash",
+      "released": "2026-01-19",
+      "updated": "2026-01-19",
+      "input": null,
+      "output": null
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.7",
+      "name": "GLM-4.7",
+      "released": "2025-12-22",
+      "updated": "2025-12-22",
+      "input": 0.6,
+      "output": 2.2
+    },
+    {
+      "provider": "openai",
+      "id": "chatgpt-image-latest",
+      "name": "chatgpt-image-latest",
+      "released": "2025-12-16",
+      "updated": "2025-12-16",
+      "input": null,
+      "output": null
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.2-pro",
+      "name": "GPT-5.2 Pro",
+      "released": "2025-12-11",
+      "updated": "2025-12-11",
+      "input": 21,
+      "output": 168
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.2-chat-latest",
+      "name": "GPT-5.2 Chat",
+      "released": "2025-12-11",
+      "updated": "2025-12-11",
+      "input": 1.75,
+      "output": 14
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.2",
+      "name": "GPT-5.2",
+      "released": "2025-12-11",
+      "updated": "2025-12-11",
+      "input": 1.75,
+      "output": 14
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.6v-flash",
+      "name": "GLM-4.6V-Flash",
+      "released": "2025-12-08",
+      "updated": "2025-12-08",
+      "input": null,
+      "output": null
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.6v",
+      "name": "GLM-4.6V",
+      "released": "2025-12-08",
+      "updated": "2025-12-08",
+      "input": 0.3,
+      "output": 0.9
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-image-1.5",
+      "name": "gpt-image-1.5",
+      "released": "2025-11-25",
+      "updated": "2025-11-25",
+      "input": null,
+      "output": null
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-opus-4-5-20251101",
+      "name": "Claude Opus 4.5",
+      "released": "2025-11-24",
+      "updated": "2025-11-01",
+      "input": 5,
+      "output": 25
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-opus-4-5",
+      "name": "Claude Opus 4.5 (latest)",
+      "released": "2025-11-24",
+      "updated": "2025-11-24",
+      "input": 5,
+      "output": 25
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5.1",
+      "name": "GPT-5.1",
+      "released": "2025-11-13",
+      "updated": "2025-11-13",
+      "input": 1.25,
+      "output": 10
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-haiku-4-5-20251001",
+      "name": "Claude Haiku 4.5",
+      "released": "2025-10-15",
+      "updated": "2025-10-15",
+      "input": 1,
+      "output": 5
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-haiku-4-5",
+      "name": "Claude Haiku 4.5 (latest)",
+      "released": "2025-10-15",
+      "updated": "2025-10-15",
+      "input": 1,
+      "output": 5
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5-pro",
+      "name": "GPT-5 Pro",
+      "released": "2025-10-06",
+      "updated": "2025-10-06",
+      "input": 15,
+      "output": 120
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.6",
+      "name": "GLM-4.6",
+      "released": "2025-09-30",
+      "updated": "2025-09-30",
+      "input": 0.6,
+      "output": 2.2
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-sonnet-4-5-20250929",
+      "name": "Claude Sonnet 4.5",
+      "released": "2025-09-29",
+      "updated": "2025-09-29",
+      "input": 3,
+      "output": 15
+    },
+    {
+      "provider": "anthropic",
+      "id": "claude-sonnet-4-5",
+      "name": "Claude Sonnet 4.5 (latest)",
+      "released": "2025-09-29",
+      "updated": "2025-09-29",
+      "input": 3,
+      "output": 15
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-image-1-mini",
+      "name": "gpt-image-1-mini",
+      "released": "2025-09-26",
+      "updated": "2025-09-26",
+      "input": null,
+      "output": null
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.5v",
+      "name": "GLM-4.5V",
+      "released": "2025-08-11",
+      "updated": "2025-08-11",
+      "input": 0.6,
+      "output": 1.8
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5-nano",
+      "name": "GPT-5 Nano",
+      "released": "2025-08-07",
+      "updated": "2025-08-07",
+      "input": 0.05,
+      "output": 0.4
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5-mini",
+      "name": "GPT-5 Mini",
+      "released": "2025-08-07",
+      "updated": "2025-08-07",
+      "input": 0.25,
+      "output": 2
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-5",
+      "name": "GPT-5",
+      "released": "2025-08-07",
+      "updated": "2025-08-07",
+      "input": 1.25,
+      "output": 10
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.5-flash",
+      "name": "GLM-4.5-Flash",
+      "released": "2025-07-28",
+      "updated": "2025-07-28",
+      "input": null,
+      "output": null
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.5-air",
+      "name": "GLM-4.5-Air",
+      "released": "2025-07-28",
+      "updated": "2025-07-28",
+      "input": 0.2,
+      "output": 1.1
+    },
+    {
+      "provider": "zhipuai",
+      "id": "glm-4.5",
+      "name": "GLM-4.5",
+      "released": "2025-07-28",
+      "updated": "2025-07-28",
+      "input": 0.6,
+      "output": 2.2
+    },
+    {
+      "provider": "openai",
+      "id": "o3-pro",
+      "name": "o3-pro",
+      "released": "2025-06-10",
+      "updated": "2025-06-10",
+      "input": 20,
+      "output": 80
+    },
+    {
+      "provider": "openai",
+      "id": "o4-mini",
+      "name": "o4-mini",
+      "released": "2025-04-16",
+      "updated": "2025-04-16",
+      "input": 1.1,
+      "output": 4.4
+    },
+    {
+      "provider": "openai",
+      "id": "o3",
+      "name": "o3",
+      "released": "2025-04-16",
+      "updated": "2025-04-16",
+      "input": 2,
+      "output": 8
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4.1-nano",
+      "name": "GPT-4.1 nano",
+      "released": "2025-04-14",
+      "updated": "2025-04-14",
+      "input": 0.1,
+      "output": 0.4
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4.1-mini",
+      "name": "GPT-4.1 mini",
+      "released": "2025-04-14",
+      "updated": "2025-04-14",
+      "input": 0.4,
+      "output": 1.6
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4.1",
+      "name": "GPT-4.1",
+      "released": "2025-04-14",
+      "updated": "2025-04-14",
+      "input": 2,
+      "output": 8
+    },
+    {
+      "provider": "openai",
+      "id": "o1-pro",
+      "name": "o1-pro",
+      "released": "2025-03-19",
+      "updated": "2025-03-19",
+      "input": 150,
+      "output": 600
+    },
+    {
+      "provider": "openai",
+      "id": "o3-mini",
+      "name": "o3-mini",
+      "released": "2024-12-20",
+      "updated": "2025-01-29",
+      "input": 1.1,
+      "output": 4.4
+    },
+    {
+      "provider": "openai",
+      "id": "o1",
+      "name": "o1",
+      "released": "2024-12-05",
+      "updated": "2024-12-05",
+      "input": 15,
+      "output": 60
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4o-2024-11-20",
+      "name": "GPT-4o (2024-11-20)",
+      "released": "2024-11-20",
+      "updated": "2024-11-20",
+      "input": 2.5,
+      "output": 10
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4o-2024-08-06",
+      "name": "GPT-4o (2024-08-06)",
+      "released": "2024-08-06",
+      "updated": "2024-08-06",
+      "input": 2.5,
+      "output": 10
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4o-mini",
+      "name": "GPT-4o mini",
+      "released": "2024-07-18",
+      "updated": "2024-07-18",
+      "input": 0.15,
+      "output": 0.6
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4o-2024-05-13",
+      "name": "GPT-4o (2024-05-13)",
+      "released": "2024-05-13",
+      "updated": "2024-05-13",
+      "input": 5,
+      "output": 15
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4o",
+      "name": "GPT-4o",
+      "released": "2024-05-13",
+      "updated": "2024-08-06",
+      "input": 2.5,
+      "output": 10
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4-turbo",
+      "name": "GPT-4 Turbo",
+      "released": "2023-11-06",
+      "updated": "2024-04-09",
+      "input": 10,
+      "output": 30
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-4",
+      "name": "GPT-4",
+      "released": "2023-11-06",
+      "updated": "2024-04-09",
+      "input": 30,
+      "output": 60
+    },
+    {
+      "provider": "openai",
+      "id": "gpt-3.5-turbo",
+      "name": "GPT-3.5-turbo",
+      "released": "2023-03-01",
+      "updated": "2023-11-06",
+      "input": 0.5,
+      "output": 1.5
+    }
+  ]
+}

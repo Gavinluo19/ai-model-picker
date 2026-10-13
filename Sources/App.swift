@@ -25,9 +25,9 @@ enum AppearanceChoice: String { case system, light, dark }
     var recommendations: [Recommendation] = []; var lastClassification: Classification?
     var activeTask = ""; var richTask = NSAttributedString(string:""); var selectionRange = NSRange(location:0,length:0); var selectedIndex = 0; var overrideEffort: Effort?; var overrideSurface: String?
     var fallback = false; var evidenceTerms: [String] = []; var detailsExpanded = false
-    var choices: [String] = []; var asking = false; var question = ""
+    var choices: [String] = []; var asking = false; var question = ""; var pendingClassification: Classification?; var fallbackReason = ""
     var busy = false; var rebuilding = false; var operationID = UUID(); var operation: Task<Void,Never>?
-    enum Notice { case none, setup, working, fallback, copied, canceled, ready, problem, rules, manual, opening }
+    enum Notice { case clarification, none, setup, working, fallback, copied, canceled, ready, problem, rules, manual, opening }
     var notice: Notice = .none; var detail = ""; var lastClient: ClientID?
     let preparer = DesktopPreparer(); let cloud = JevClient()
     var market:MarketSnapshot?; var modelsStatus:NSTextField?; var modelTable:DataTable?; var priceTable:DataTable?
@@ -108,7 +108,7 @@ enum AppearanceChoice: String { case system, light, dark }
     func snapshotInput() { if !rebuilding { activeTask = input.string; richTask = input.attributedString(); selectionRange = input.selectedRange() } }
     func rebuildMain() {
         rebuilding = true; defer { rebuilding = false }
-        panel.title = UIStrings.appName + " · V0.4"
+        panel.title = UIStrings.appName + " · V0.4.1"
         let outer = NSScrollView(); outer.hasVerticalScroller = true; outer.hasHorizontalScroller = false; outer.drawsBackground = false
         panel.contentView = outer; contentScroll = outer
         let content = FlippedDocumentView(); content.translatesAutoresizingMaskIntoConstraints = false; outer.documentView = content
@@ -119,7 +119,7 @@ enum AppearanceChoice: String { case system, light, dark }
         let spacer = NSView(); spacer.setContentHuggingPriority(.defaultLow,for:.horizontal)
         let lang = button(language == .zh ? "EN":"中文",#selector(toggleLanguage)); lang.toolTip = tr("切换为英文","Switch to Chinese")
         let theme = button("",#selector(toggleTheme)); theme.image = NSImage(systemSymbolName:panel.effectiveAppearance.bestMatch(from:[.aqua,.darkAqua]) == .darkAqua ? "sun.max":"moon",accessibilityDescription:tr("切换外观","Switch appearance")); theme.toolTip = tr("切换浅色或深色","Switch light or dark appearance")
-        full(row([title,label("V0.4",size:11,secondary:true),spacer,lang,theme,button(tr("设置","Settings"),#selector(showSettings))]),s)
+        full(row([title,label("V0.4.1",size:11,secondary:true),spacer,lang,theme,button(tr("设置","Settings"),#selector(showSettings))]),s)
         full(label(tr("按任务选对模型，用好已付费的 AI 订阅。","Pick the right model for your task. Make the most of your AI subscriptions."),secondary:true),s)
         let scroll = TaskScrollView(); scroll.borderType = .bezelBorder; scroll.hasVerticalScroller = true; scroll.hasHorizontalScroller = false; scroll.autohidesScrollers = true
         input = TaskInput(frame:NSRect(x:0,y:0,width:520,height:90)); input.minSize = NSSize(width:0,height:90); input.maxSize = NSSize(width:CGFloat.greatestFiniteMagnitude,height:CGFloat.greatestFiniteMagnitude); input.isRichText = true; input.importsGraphics = false; input.allowsUndo = true; input.font = .systemFont(ofSize:15); input.textContainerInset = NSSize(width:10,height:10)
@@ -138,10 +138,14 @@ enum AppearanceChoice: String { case system, light, dark }
         full(row([primary,spinner,cancelButton]),s)
         status = label("",size:12,secondary:true); full(status,s)
         manualGroup = column(spacing:8)
-        full(label(tr("这次主要想完成什么？","What is the main task?"),size:13),manualGroup)
+        full(label(question,size:13),manualGroup)
         manualChoice = NSPopUpButton(); manualChoice.addItem(withTitle:tr("选择主要任务","Choose the main task"))
-        let ids = choices.isEmpty ? book.tasks.map(\.id):choices
-        for id in ids { manualChoice.addItem(withTitle:book.name(for:id)); manualChoice.lastItem?.representedObject = id }
+        let ids = pendingClassification?.clarifySurface == true ? ["discussion","files","code"] : choices.isEmpty ? book.tasks.map(\.id):choices
+        for id in ids {
+            let title = pendingClassification?.clarifySurface == true ? (id == "discussion" ? tr("讨论与建议","Discussion & advice") : id == "files" ? tr("研究或文件处理","Research or files") : tr("修改代码与测试","Code & tests")) : book.name(for:id)
+            manualChoice.addItem(withTitle:title); manualChoice.lastItem?.representedObject = id
+        }
+        if !choices.isEmpty && pendingClassification?.clarifySurface != true { manualChoice.addItem(withTitle:tr("其他任务…","Other task…")); manualChoice.lastItem?.representedObject = "__other" }
         full(row([manualChoice,button(tr("采用选择","Use selection"),#selector(confirmChoice))]),manualGroup); full(manualGroup,s); manualGroup.isHidden = !asking
         resultGroup = column(spacing:9)
         sourceLabel = label("",size:11,secondary:true); full(sourceLabel,resultGroup)
@@ -210,10 +214,11 @@ enum AppearanceChoice: String { case system, light, dark }
     func renderStatus() {
         let text:String
         switch notice {
+        case .clarification: text = pendingClassification?.source == "jev" ? tr("JEV 已分析，请补充一个选择。","JEV analyzed your task. Confirm one choice.") : tr("离线规则需要补充一个选择。","Offline rules need one choice.")
         case .none: text = ""
         case .setup: text = tr("设置个人 JEV Key 后可用智能推荐；现在可用离线规则。","Set your JEV key for AI recommendations. Offline rules are available now.")
         case .working: text = tr("处理中…","Working…")
-        case .fallback: text = tr("智能服务暂不可用，已使用离线规则。","AI is unavailable; offline rules were used.")
+        case .fallback: text = tr("JEV 未完成，已转用离线规则：","JEV failed; using offline rules: ") + fallbackReason
         case .copied: text = tr("需求已复制。","Task copied.")
         case .canceled: text = tr("已取消，输入已保留。","Canceled. Your text is preserved.")
         case .ready: text = tr("准备好了，可在 ","Ready in ") + (lastClient?.name ?? "") + tr(" 中发送。",". Send the task there.")
@@ -269,14 +274,15 @@ enum AppearanceChoice: String { case system, light, dark }
                     return try await self.cloud.classify(task:capturedTask,book:snapshot,key:key)
                 }
                 try Task.checkCancellation(); guard self.operationID == token else { return }
-                self.fallback = result.didFallback
+                self.fallback = result.didFallback; self.fallbackReason = result.error ?? ""; self.pendingClassification = result.classification
                 if let local = result.offline { self.evidenceTerms = local.matchedTerms }
                 if let answer = result.classification, answer.clarification == nil { self.apply(answer) }
                 else {
-                    self.choices = result.offline?.candidates ?? []; self.asking = true
-                    self.question = tr("这次主要想完成哪类任务？","Which is the main task?")
-                    self.notice = result.didFallback ? .fallback:.none
+                    self.choices = result.offline?.candidates ?? result.classification?.clarificationCandidates ?? []; self.asking = true
+                    self.question = result.classification?.clarifySurface == true ? tr("这次需要哪种工作方式？","What kind of work is needed?") : result.offline?.message ?? tr("请选择这次的主要任务。","Choose the main task for this request.")
+                    self.notice = result.didFallback ? .fallback:.clarification
                     if !snapshot.supportsOfflineMatching && chosenMode == .offline { self.notice = .problem; self.detail = tr("旧规则没有离线匹配条件，请选类型或导入新版规则。","The old rulebook has no offline conditions. Choose a category or import newer rules.") }
+                    self.audit.record(action: "clarify_" + (result.classification?.source ?? "offline"), version: snapshot.version, outcome: result.didFallback ? "fallback" : result.classification?.clarifySurface == true ? "needs_surface" : "needs_category")
                     self.rebuildMain()
                 }
             } catch is CancellationError { if self.operationID == token { self.notice = .canceled; self.renderStatus() } }
@@ -286,9 +292,15 @@ enum AppearanceChoice: String { case system, light, dark }
     @objc func confirmChoice() {
         guard !busy else { return }
         guard let id = manualChoice.selectedItem?.representedObject as? String else { return }
+        if id == "__other" { choices = []; pendingClassification = nil; snapshotInput(); rebuildMain(); return }
+        if let pending = pendingClassification, pending.clarifySurface {
+            asking = false
+            apply(Classification(category:pending.category,surface:id,complexity:pending.complexity,classifierModel:pending.classifierModel,clarification:nil,confidence:pending.confidence,source:"manual"))
+            return
+        }
         let local = book.offline[id]
         let context = local?.surface ?? (["coding","debugging","frontend","testing_review"].contains(id) ? "code" : ["strategy","architecture","simple"].contains(id) ? "discussion":"files")
-        let answer = Classification(category:id,surface:context,complexity:local?.complexity ?? 1,classifierModel:"",clarification:nil,confidence:nil,source:"manual")
+        let answer = Classification(category:id,surface:pendingClassification?.surface == "unknown" ? context : pendingClassification?.surface ?? context,complexity:pendingClassification?.complexity ?? local?.complexity ?? 1,classifierModel:"",clarification:nil,confidence:nil,source:"manual")
         asking = false; apply(answer)
     }
     func apply(_ classification:Classification) {

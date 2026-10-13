@@ -45,6 +45,21 @@ import Carbon
         try expect(OfflineEngine.classify("Research competitors and create slides",book:book).classification == nil, "compound task asks for main goal")
         try expect(OfflineEngine.classify("无需写代码，请梳理软件架构",book:book).classification?.category == "architecture", "Chinese negation avoids coding")
         try expect(OfflineEngine.classify("Do not implement; define system architecture",book:book).classification?.category == "architecture", "English negation avoids coding")
+        let productTasks = [
+            "我想做一些网页的分析，我是一个产品经理，然后用于我开发产品，你看我用哪个模型好一点",
+            "分析这个网页的功能与交互，为产品设计提改进建议",
+            "分析三家竞品网站，形成产品需求与交互方案",
+            "不要写代码，只做网页分析，给我改进建议",
+            "Analyze this website for product design; do not implement code"
+        ]
+        for task in productTasks { try expect(OfflineEngine.classify(task,book:book).classification?.category == "research", "product analysis intent: " + task) }
+        try expect(OfflineEngine.classify("我是产品经理，用于开发产品",book:book).classification == nil, "role and purpose alone do not invent a task")
+        try expect(OfflineEngine.classify("不要网页分析，请实现导入功能",book:book).classification?.category == "coding", "negated analysis keeps implementation")
+        try expect(OfflineEngine.classify("网页分析，同时实现导入功能",book:book).classification == nil, "independent analysis and implementation asks")
+        let surfaceQuestion = try parse(response(book,category:"research",surface:"unknown"),book:book)
+        try expect(surfaceQuestion.clarifySurface && surfaceQuestion.category == "research", "surface question preserves category")
+        let categoryQuestion = try parse(response(book,category:"research",confidence:0.2),book:book)
+        try expect(!categoryQuestion.clarifySurface && categoryQuestion.clarificationCandidates == ["research"], "category question carries meaningful candidates")
         try expect(OfflineEngine.classify("你好",book:book).classification == nil, "unmatched task asks instead of guessing")
         try expect(!OfflineEngine.matches("bug",in:"debugger"), "Latin token boundary")
         try expect(OfflineEngine.classify("简单翻译",book:book).classification?.complexity == 0, "light task stays low")

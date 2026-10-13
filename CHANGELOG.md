@@ -1,5 +1,13 @@
 # Changelog
 
+## V0.4.1 (internal 1.3.1, build 5) — 2026-10-13
+
+- Cover website, UX and product analysis in bilingual Markdown rules; distinguish downstream product development from actual coding.
+- Show successful JEV clarification separately from service failure, expose fallback reasons, and offer up to three likely categories plus Other.
+- Preserve the classified category and complexity when asking about work mode.
+- 144 local regression checks; a live authenticated JEV request classified the reported website-analysis task as research (0.99 confidence).
+- Existing credentials, preferences and imported rules are preserved. Custom rules require manual updates. Desktop handoff is not newly validated by this patch.
+
 ## V0.4 (internal 1.3.0, build 4) — 2026-10-01
 
 - Replaced More and mode/effort dropdowns with inline actions and horizontal controls.

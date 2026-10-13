@@ -8,7 +8,7 @@
 
 A small native macOS assistant for people who use more than one AI service. Describe a new task, review four rule-ranked choices, choose an app/model/reasoning effort, and open or prepare the task in the original client. You send the message and continue there.
 
-**V0.4 is an open-source alpha, not a fully validated desktop automation product.** Offline routing and public-data contracts have local tests; live JEV classification and four-client end-to-end preparation are still awaiting account-specific acceptance. The binary is ad hoc signed and **not Apple-notarized**. Start with offline recommendations and manual Open + Copy; see [release status](docs/RELEASE_STATUS.md).
+**V0.4.1 is an open-source alpha, not a fully validated desktop automation product.** Offline routing and public-data contracts have local tests; live JEV website-analysis classification passed on the maintainer’s Mac; four-client end-to-end preparation still needs account-specific acceptance. The binary is ad hoc signed and **not Apple-notarized**. Start with offline recommendations and manual Open + Copy; see [release status](docs/RELEASE_STATUS.md).
 
 ## Who it helps
 

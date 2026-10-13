@@ -9,6 +9,8 @@ struct Classification {
     let clarification: String?
     let confidence: Double?
     let source: String
+    var clarificationCandidates: [String] = []
+    var clarifySurface: Bool = false
 }
 
 enum ResponseValidator {
@@ -52,16 +54,21 @@ enum ResponseValidator {
             ? Int(ranked[0].key)! : 1
         let leaders = category.2.sorted { $0.value == $1.value ? $0.key < $1.key : $0.value > $1.value }
         var reason: String?
+        var clarifySurface = false
         if category.0 == "needs_choice" || category.1 < book.thresholds["分类最低置信度"]! || leaders[0].value - leaders[1].value < book.thresholds["分类前两项最低差值"]! || clarification >= book.thresholds["需要澄清阈值"]! {
             let names = leaders.prefix(2).compactMap { item in book.tasks.first(where: { $0.id == item.key })?.name }
             reason = names.count == 2 ? "这次主要是“\(names[0])”还是“\(names[1])”？请在下方选定类型。" : "这次最主要的交付目标是什么？请在下方选定任务类型。"
         } else if surface.0 == "unknown" || surface.1 < book.thresholds["模式最低置信度"]! {
+            clarifySurface = true
             reason = "这次只需要讨论，还是要处理文件或修改代码？请在下方选择工作方式。"
         }
         let codingIDs: Set<String> = ["coding", "debugging", "frontend", "testing_review"]
-        if codingIDs.contains(category.0) && surface.0 != "code" { reason = "这次是否要实际修改代码或运行测试？请核对下方的工作方式。" }
-        return Classification(category: category.0, surface: surface.0, complexity: complexity,
+        if reason == nil && codingIDs.contains(category.0) && surface.0 != "code" { clarifySurface = true; reason = "这次是否要实际修改代码或运行测试？请核对下方的工作方式。" }
+        var result = Classification(category: category.0, surface: surface.0, complexity: complexity,
                               classifierModel: model, clarification: reason, confidence: category.1, source: "jev")
+        result.clarifySurface = clarifySurface
+        result.clarificationCandidates = leaders.filter { $0.key != "needs_choice" && $0.value > 0.01 }.prefix(3).map(\.key)
+        return result
     }
 }
 

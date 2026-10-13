@@ -4,7 +4,7 @@ TASK_ROUTER_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TASK_ROUTER_STAGE="$(mktemp -d "${TMPDIR:-/tmp}/TaskRouterPackage.XXXXXX")"
 trap 'rm -rf "$TASK_ROUTER_STAGE"' EXIT
 TASK_ROUTER_APP="$TASK_ROUTER_ROOT/dist/AI选模助手.app"
-TASK_ROUTER_IMAGE="$TASK_ROUTER_ROOT/dist/AI选模助手_V0.4_内测.dmg"
+TASK_ROUTER_IMAGE="$TASK_ROUTER_ROOT/dist/AI选模助手_V0.4.1_内测.dmg"
 [[ -d "$TASK_ROUTER_APP" ]] || { echo "请先运行 scripts/build.sh" >&2; exit 1; }
 python3 - "$TASK_ROUTER_STAGE" "$TASK_ROUTER_APP" "$TASK_ROUTER_ROOT" <<'PY'
 from pathlib import Path
@@ -37,7 +37,7 @@ PY
 xattr -r -d com.apple.FinderInfo "$TASK_ROUTER_STAGE/AI选模助手.app" 2>/dev/null || true
 xattr -r -d com.apple.ResourceFork "$TASK_ROUTER_STAGE/AI选模助手.app" 2>/dev/null || true
 codesign --verify --deep --strict "$TASK_ROUTER_STAGE/AI选模助手.app"
-hdiutil create -volname "AI选模助手 V0.4 内测" -srcfolder "$TASK_ROUTER_STAGE" -ov -format UDZO "$TASK_ROUTER_IMAGE"
+hdiutil create -volname "AI选模助手 V0.4.1 内测" -srcfolder "$TASK_ROUTER_STAGE" -ov -format UDZO "$TASK_ROUTER_IMAGE"
 hdiutil verify "$TASK_ROUTER_IMAGE"
 shasum -a 256 "$TASK_ROUTER_IMAGE" > "$TASK_ROUTER_ROOT/dist/SHA256.txt"
 printf '%s\n' "$TASK_ROUTER_IMAGE"

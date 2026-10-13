@@ -43,13 +43,19 @@ enum OfflineEngine {
         guard task.utf8.count <= 48_000 else {
             return OfflineOutcome(classification: nil, candidates: [], matchedTerms: [], message: tr("这段需求较长，请选择主要任务类型。", "This task is long. Choose its main category."))
         }
+        // Purpose clauses describe downstream use, not the requested action.
+        // Match only the requested work, keeping independent compound goals intact.
+        let matchText = task.replacingOccurrences(of: "(?:用于|用来|以便)(?:我)?(?:开发产品|产品开发|产品设计)", with: "", options: .regularExpression)
         var ranked: [(OfflineRule, [String], Double)] = []
         for rule in book.offline.values {
             if rule.exclusions.contains(where: { matches($0, in: task, respectNegation: false) }) { continue }
-            guard rule.all.allSatisfy({ matches($0, in: task) }) else { continue }
-            let hit = rule.any.filter { matches($0, in: task) }
+            guard rule.all.allSatisfy({ matches($0, in: matchText) }) else { continue }
+            let hit = rule.any.filter { matches($0, in: matchText) }
             guard !hit.isEmpty || !rule.all.isEmpty else { continue }
-            let terms = Array(Set(hit + rule.all)).sorted()
+            let effectiveHit = rule.id == "architecture" && matches("竞品网站", in: matchText) && matchText.range(of: "(?:形成|整理|产出)[^，。；]{0,8}产品需求", options: .regularExpression) != nil
+                ? hit.filter { $0 != "产品需求" && $0 != "product requirements" } : hit
+            guard !effectiveHit.isEmpty || !rule.all.isEmpty else { continue }
+            let terms = Array(Set(effectiveHit + rule.all)).sorted()
             let score = terms.reduce(0.0) { result, term in
                 let phrase = term.contains(" ") || term.unicodeScalars.contains(where: { $0.value > 127 }) && term.count >= 4
                 return result + (phrase ? 20 : 10)

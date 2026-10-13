@@ -10,7 +10,7 @@
 
 AI 选模助手是一个轻量原生 Mac 工具：描述本次任务，查看四个规则优先级，选择模型和工作区，再打开或尝试准备到原客户端。**需求由你在原客户端发送，聊天和后续工作也继续留在那里。**
 
-**当前 V0.4 是开源 Alpha。** 离线规则及数据更新协议已有本地检查；真实 JEV 分类和四客户端自动准备仍需账户环境验收。安装包使用临时签名，**尚未 Apple 公证**，部分 Mac 会阻止打开。建议先用“离线推荐 → 仅打开 → 复制需求”的手动交接流程。详细边界见[验证与限制](docs/RELEASE_STATUS.md)。
+**当前 V0.4.1 是开源 Alpha。** 离线规则及数据更新协议已有本地检查；本机真实 JEV 网页分析分类已验证，四客户端自动准备仍需各账户环境验收。安装包使用临时签名，**尚未 Apple 公证**，部分 Mac 会阻止打开。建议先用“离线推荐 → 仅打开 → 复制需求”的手动交接流程。详细边界见[验证与限制](docs/RELEASE_STATUS.md)。
 
 ## 适合谁，能解决什么
 
@@ -88,7 +88,7 @@ bash scripts/build.sh
 bash scripts/package.sh
 ```
 
-输出为 `dist/AI选模助手.app`，安装包包含 Apple Silicon / Intel 双架构。Intel 与最低支持系统的运行尚未验收。产品标记 V0.4，内部版本 1.3.0 build 4；保留原应用身份、Keychain 与自定义规则。
+输出为 `dist/AI选模助手.app`，安装包包含 Apple Silicon / Intel 双架构。Intel 与最低支持系统的运行尚未验收。产品标记 V0.4.1，内部版本 1.3.1 build 5；保留原应用身份、Keychain 与自定义规则。
 
 正式二进制发行需要 Developer ID 签名、公证及另一台 Mac 验收，本 Alpha 尚未完成。可选签名方法见[开发说明](docs/DEVELOPING.md)。提供[可自行启用的 macOS CI 模板](examples/github-actions/macos.yml)，不宣传尚未运行的 CI 状态。
 
